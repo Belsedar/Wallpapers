@@ -16,27 +16,27 @@ CATEGORIES = [
     (
         "baroque",
         "heRJbiin",
-        "sha256:163j7dwpqxg1783pvhw4w8iwvjhwnns06r8s1fyk9gvjfijc1pvx",
+        "sha256:851332a261718877d50a9caae3703417d4c91667c52d8cdd25c3a4d8cf8c5a15",
     ),
     (
         "impressionist",
         "6Ju71xWo",
-        "sha256:0a2m6i01svczjx7rxhd4gjz8dps9gkqijh4kj1wvp8jzjl3hb47a",
+        "sha256:4164e80bc69b47179768b43e127ba85aaa80425c5e62f762ada242428567a81e",
     ),
     (
         "romantic",
         "PmKL8X81",
-        "sha256:0i5jl74s4dqvsf0iygk18dlkxbsqy0iqf4lwdym6kmljgafp8bm9",
+        "sha256:d6a4f3c5980bddeda5ac63b888a627ab7a811e3ca7604a1f652965aad91ff1e7",
     ),
     (
         "general",
         "ahiL5QGu",
-        "sha256:091wiikaczq2wbqk4hn02n822cvvq6gg24p9qyiwl35rdn56vsyc",
+        "sha256:7648cc81e7f7c90569c511b7eb5b03fbfe8123073b556415e6f1f043bdb89ad4",
     ),
     (
         "pcc0",
         "hjZAnHoV",
-        "sha256:0ldpb6hm02jb1v292iij51n1fr42y5j2h3kfihpddv6j9yy7sfcs",
+        "sha256:17185d544d1c91e982b7616c019f13410042b5a341051a9ac0ce6284cc4817a2",
     ),
 ]
 PDL = "https://pixeldrain.com/api/file/{fid}?download=1"
@@ -86,17 +86,17 @@ def download(url: str, dest: Path, digest: str) -> None:
                         f.write(chunk)
                         bar.update(len(chunk))
 
-        with open(dest, "rb") as f:
-            print("Verifying digest...", end="", file=sys.stderr)
-            got_digest: str = hashlib.file_digest(f, digest_kind).hexdigest()
-            if got_digest != digest:
-                die(
-                    f" ❌mismatch!\n"
-                    f"Received {digest_kind}:{got_digest}\n"
-                    f"Expected {digest_kind}:{digest}\n"
-                )
-            else:
-                print(" " + CHECK, file=sys.stderr)
+    with open(dest, "rb") as f:
+        print("Verifying digest...", end="", file=sys.stderr)
+        got_digest: str = hashlib.file_digest(f, digest_kind).hexdigest()
+        if got_digest != digest:
+            die(
+                f" {CROSS} mismatch!\n"
+                f"Received {digest_kind}:{got_digest}\n"
+                f"Expected {digest_kind}:{digest}\n"
+            )
+        else:
+            print(" " + CHECK, file=sys.stderr)
 
 
 def extract(archive: Path, extract_to: Path) -> None:
