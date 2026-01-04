@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/belsedar/Belsedar's Backgrounds">
-    <img src="images/logo.svg" alt="Logo" width="120" height="120">
+    <img src="images/logo-light.svg" alt="Logo" width="120" height="120">
   </a>
 
   <h3 align="center">Belsedar's Backgrounds</h3>
